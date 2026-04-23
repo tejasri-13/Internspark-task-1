@@ -1,0 +1,51 @@
+            CRUD API Outputs
+✅ Create Employee
+Status: 201 Created
+
+{
+  "id": 1,
+  "name": "Tejasri",
+  "email": "teju1305@email.com"
+}
+✅ Get All Employees
+Status: 200 OK
+
+[
+  {
+    "id": 1,
+    "name": "Tejasri",
+    "email": "teju1305@email.com"
+  },
+  {
+    "id": 2,
+    "name": "harika",
+    "email": "harika@email.com"
+  }
+]
+✅ Get Employee by ID
+Status: 200 OK
+
+{
+  "id": 1,
+  "name": "Teju",
+  "email": "teju1305@email.com"
+}
+✅ Update Employee
+Status: 200 OK
+
+{
+  "id": 1,
+  "name": "Tejasri Updated",
+  "email": "updated@email.com"
+}
+✅ Delete Employee
+Status: 204 No Content
+❌ Validation Error Example
+Status: 400 Bad Request
+
+{
+  "errors": [
+    "Name is required",
+    "Invalid email"
+  ]
+}
