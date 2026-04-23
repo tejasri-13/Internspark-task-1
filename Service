@@ -1,0 +1,41 @@
+package com.example.demo.service;
+
+import com.example.demo.dto.EmployeeDTO;
+import com.example.demo.entity.Employee;
+import com.example.demo.repository.EmployeeRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class EmployeeService {
+
+    private final EmployeeRepository repo;
+
+    public EmployeeService(EmployeeRepository repo) {
+        this.repo = repo;
+    }
+
+    public Employee create(EmployeeDTO dto) {
+        return repo.save(new Employee(null, dto.getName(), dto.getEmail()));
+    }
+
+    public List<Employee> getAll() {
+        return repo.findAll();
+    }
+
+    public Employee getById(Long id) {
+        return repo.findById(id).orElseThrow();
+    }
+
+    public Employee update(Long id, EmployeeDTO dto) {
+        Employee emp = getById(id);
+        emp.setName(dto.getName());
+        emp.setEmail(dto.getEmail());
+        return repo.save(emp);
+    }
+
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
+}
